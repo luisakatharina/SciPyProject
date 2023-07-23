@@ -7,22 +7,16 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-nltk.download('stopwords')
 
 
-# Loading the dataset
-# df = pd.read_json("C:/Users/Luisa/Documents/Uni/SoSe 2023/SciPy/Project/Sarcasm_Headlines_Dataset_v2.json") 
-# --> did not work because of parsing error in json file
-# read file line by line and append each JSON object to list
+
 data = []
-with open("C:/Users/Luisa/Documents/Uni/SoSe 2023/SciPy/Project/Sarcasm_Headlines_Dataset_v2.json", 'r') as file:
+with open("Sarcasm_Headlines_Dataset_v2.json", 'r') as file:
     for line in file:
         data.append(json.loads(line))
 
 df = pd.DataFrame(data)
 
-
-# Actual Text Preprocessing
 # Removing stopwords
 stopwords = set(stopwords.words('english'))
 
@@ -69,30 +63,27 @@ def expand_contractions(text):
     expanded_text = pattern.sub(lambda match: contractions[match.group(0)], text)
     return expanded_text
 
+def preprocess_and_split_data():
 
+    # Applying to 'headline' column
+    # Processed headlines stored in new column (to preserve original text data)
+    df['processed_headline'] = df['headline'].apply(preprocess_text)
 
-# Applying to 'headline' column
-# Processed headlines stored in new column (to preserve original text data)
-df['processed_headline'] = df['headline'].apply(preprocess_text)
+    # LabelEncoder from sklearn.preprocessing module to encode target variable 'is_sarcastic'
+    # From categorical values to numeric values, then stored in 'is_sarcastic_encoded'
+    label_encoder = LabelEncoder()
+    df['is_sarcastic_encoded'] = label_encoder.fit_transform(df['is_sarcastic'])
 
+    # TF-IDF feature extraction --> Feature matrix X
+    # Convert textual data in 'processed_headline' column into numerical feature matrix X
+    tfidf_vectorizer = TfidfVectorizer()
+    X = tfidf_vectorizer.fit_transform(df['processed_headline'])
+    y = df['is_sarcastic_encoded']    # each value 0 or 1 (class of sarcasm)
 
-# LabelEncoder from sklearn.preprocessing module to encode target variable 'is_sarcastic'
-# From categorical values to numeric values, then stored in 'is_sarcastic_encoded'
-label_encoder = LabelEncoder()
-df['is_sarcastic_encoded'] = label_encoder.fit_transform(df['is_sarcastic'])
+    # Splitting data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=32)
 
+    print("processing and splitting done")
 
-# TF-IDF feature extraction --> Feature matrix X
-# Convert textual data in 'processed_headline' column into numerical feature matrix X
-tfidf_vectorizer = TfidfVectorizer()
-X = tfidf_vectorizer.fit_transform(df['processed_headline'])
-y = df['is_sarcastic_encoded']    # each value 0 or 1 (class of sarcasm)
+    return X_train, X_test, y_train, y_test
 
-
-# Splitting data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=32)
-
-
-
-# testing (for me/us right now)
-print(df['processed_headline'].head())
