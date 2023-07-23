@@ -11,9 +11,13 @@ Luisa
 - SVM: Isa
 
 ## User Input + Preproccesing
- 
+Isa
 
 ## Plotting Evaluation + Dataframe
 Vanessa
 
 ## Main
+Shabnam
+
+## Documentation
+Shabnam+Isa
