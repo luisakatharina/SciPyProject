@@ -30,20 +30,13 @@ def user_Input():
         msg_verify = "Your Input:\n" + headline_input +"\n\nWould you like to continue or do you want to change your headline?"
         if eg.ccbox(msg_verify, title, ["Continue", "Change Headline"]):     # show a Continue/Cancel dialog
             satisfied_hl=True  # user chose Continue
-        elif eg.ccbox(msg_verify, title, ["Continue", "Change Headline"]) == None: 
-            quit()
-        else:  # user chose Cancel
+        else:  # user chose change headline
             satisfied_hl=False
     
     
     
     ask_class ="Now you can choose from which of the following ML classifiers you want a prediction from.\nNote: we will always choose the best parameters and will give you an evaluation of the respective classifier/s"
-    choices = ["Naive Bayes", "k-nearest Neighbor", "Random Forest", "Support Vector Machine", "All"]
-    choice = eg.choicebox(ask_class, title, choices)
-    if choice == None:
-        quit()
+    choices = ["Naive Bayes", "k-nearest Neighbor", "Random Forest", "Support Vector Machine"]
+    choice = eg.multchoicebox(ask_class, title, choices)
 
     return headline_input, choice
-
-
-user_Input()

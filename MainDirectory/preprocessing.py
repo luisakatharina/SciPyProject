@@ -8,7 +8,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 
-
+#nltk.download('stopwords') # may need to download stopwords and punkt first
+#nltk.download('punkt') 
 
 data = []
 with open("Sarcasm_Headlines_Dataset_v2.json", 'r') as file:

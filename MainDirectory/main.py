@@ -8,6 +8,15 @@ headline_input, chosen_Classifiers = user_Input()
 headline_pp = preprocess_text(headline_input)
 X_pred = expand_contractions(headline_pp)
 
+if chosen_Classifiers == None:
+    print("There seems to be a problem... maybe you did not select any classifiers? Or you terminated the program early?")
+    answer = input("Do you wish to retry the program? y/n")
+    if answer == "y" or answer == "Y":
+        #run main again --> Please shabnam can you implement? :)
+        print("Rerun program")
+    else:
+        quit()
+
 # evaluate_model still needs parameters (best_params, best_score, y_true, y_pred)
-for classifier in chosen_Classifiers:
-    evaluate_model(classifier) # because chosen_classifiers are given in a list
+#for classifier in chosen_Classifiers: # @shabnam because chosen_classifiers are given in a list
+ #   evaluate_model(classifier) 
