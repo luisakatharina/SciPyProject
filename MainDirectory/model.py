@@ -36,6 +36,8 @@ def train_and_predict_with_knn(X_train, y_train, X_pred):
     grid_search = GridSearchCV( KNeighborsClassifier(), params_grid, cv=5, scoring='accuracy')
     print("grid search is fitting")
     grid_search.fit(X_train, y_train)
+
+    # prediction
     print("prediction starts")
     y_pred = grid_search.best_estimator_.predict(X_pred)
 
@@ -52,17 +54,16 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
     X_train = training feature matrix obtained from TF-IDF conversion
     y_train = corresponding target variable
     '''
-    # classification
-    #SVM_classifier = SVC()
-    #SVM_classifier.fit(X_train, y_train)
-    #y_pred = SVM_classifier.predict(X_pred)
 
+    print("train and predict starts")
     # Grid search for parameter tuning
     params_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
-    grid_search = GridSearchCV( KNeighborsClassifier(), params_grid, cv=5, scoring='accuracy') #refit=True,verbose=2
+    grid_search = GridSearchCV( KNeighborsClassifier(), params_grid, cv=5, scoring='accuracy', refit=True,verbose=2)
+    print("grid search is fitting")
     grid_search.fit(X_train, y_train)
 
     # prediction
+    print("prediction starts")
     y_pred = grid_search.best_estimator_.predict(X_pred)
 
     best_params = grid_search.best_params_
