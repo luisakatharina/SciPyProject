@@ -19,4 +19,5 @@ if chosen_Classifiers == None:
 
 # evaluate_model still needs parameters (best_params, best_score, y_true, y_pred)
 #for classifier in chosen_Classifiers: # @shabnam because chosen_classifiers are given in a list
- #   evaluate_model(classifier) 
+ #   correct variable names = use_model(classifier) @shabnam bitte dein model auch bei use_model function (bei model file) adden :)
+ #   evaluation

@@ -3,6 +3,21 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import  GridSearchCV
 from sklearn.svm import SVC
 
+# to chose correct model to run based on user input
+def use_model(classifier_name, X_train, y_train, X_pred):
+    if classifier_name == "Naive Bayes":
+        return  train_and_predict_with_naivebayes(X_train, y_train, X_pred)
+    
+    if classifier_name == "k-nearest Neighbor":
+        return  train_and_predict_with_knn(X_train, y_train, X_pred)
+    
+    if classifier_name == "Random Forest":
+        return  #train_and_predict_with_naivebayes(X_train, y_train, X_pred)
+    
+    if classifier_name == "Support Vector Machine":
+        return  train_and_predict_with_SVM(X_train, y_train, X_pred)
+    
+
 # Naive Bayes Model:
 def train_and_predict_with_naivebayes(X_train, y_train, X_pred):
     '''
