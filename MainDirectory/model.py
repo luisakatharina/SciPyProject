@@ -1,6 +1,7 @@
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import  GridSearchCV
+from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 from numpy import mean
@@ -49,7 +50,7 @@ def train_and_predict_with_knn(X_train, y_train, X_pred):
     '''
 
     X_pred = X_pred.reshape(1, -1)
-    print("train and predict starts")
+    print("train and predict starts for knn starts")
     params_grid = {'n_neighbors': [2, 3]}
 
     # Grid search for parameter tuning
@@ -75,7 +76,7 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
     y_train = corresponding target variable
     '''
 
-    print("train and predict starts")
+    print("train and predict for SVM starts")
     # Grid search for parameter tuning
     params_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
     grid_search = GridSearchCV(SVC(), params_grid, cv=5, scoring='accuracy', refit=True,verbose=2)
@@ -98,7 +99,7 @@ def train_and_predict_with_RF(X_train, y_train, X_pred):
     y_train = corresponding target variable
     '''
 
-    print("training starts")
+    print("training for Random Forest starts")
 
     classifier = RandomForestClassifier()
 
