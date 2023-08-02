@@ -8,8 +8,15 @@ while True:
 
     headline_input, chosen_Classifiers = user_Input()
 
-    headline_pp = preprocess_text(headline_input)
-    X_pred = expand_contractions(headline_pp)
+    headline_exp = expand_contractions(headline_input)
+    X_pred = preprocess_text(headline_exp)
+
+    #remove this if u want the shape error back lol
+    X_pred = [X_pred]
+    X_pred = vectorizeText(X_pred)
+    # if i do this i get "ValueError: X has 2 features, but MultinomialNB is expecting 25852 features as input."
+
+
 
 
     if chosen_Classifiers == None:
@@ -25,19 +32,16 @@ while True:
     # get the training data
     X_train, X_test, y_train, y_test = preprocess_and_split_data()
 
-    # im confused what we are using for the evaluation, since X_pred is only a single sample
-    y_true = 1
+    #y_true = 1
 
-    """ throws error: "ValueError: Expected 2D array, got scalar array instead: array=florida man nice person.
-        Reshape your data either using array.reshape(-1, 1) if your data has a single feature 
-        or array.reshape(1, -1) if it contains a single sample." """
+    """ throws error: "ValueError: X has 2 features but [classifier] expects 25852 features"""
 
-    """if i use X_test instead of X_pred, naive bayes works fine, knn throws an error, SVM takes AGES (i think its due
-        to the large amount of samples? I cant remember if random forest worked """
+    """if we use X_test  for evaluation knn throws an error"""
 
+    # evaluating the chosen models' performances on the test set
     for classifier in chosen_Classifiers:
-        y_pred, best_params, best_score = use_model(classifier, X_train, y_train, X_pred)
-        evaluate_model(classifier,best_params,best_score,y_true,y_pred)
+        y_pred, best_params, best_score = use_model(classifier, X_train, y_train, X_test)
+        evaluate_model(classifier,best_params,best_score,y_test,y_pred)
 
 
 # evaluate_model still needs parameters (best_params, best_score, y_true, y_pred)

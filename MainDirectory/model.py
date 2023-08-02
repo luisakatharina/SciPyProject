@@ -9,16 +9,16 @@ from numpy import mean
 # to chose correct model to run based on user input
 def use_model(classifier_name, X_train, y_train, X_pred):
     if classifier_name == "Naive Bayes":
-        return  train_and_predict_with_naivebayes(X_train, y_train, X_pred)
+        return train_and_predict_with_naivebayes(X_train, y_train, X_pred)
     
     if classifier_name == "k-nearest Neighbor":
-        return  train_and_predict_with_knn(X_train, y_train, X_pred)
+        return train_and_predict_with_knn(X_train, y_train, X_pred)
     
     if classifier_name == "Random Forest":
-        return  train_and_predict_with_RF(X_train, y_train, X_pred)
+        return train_and_predict_with_RF(X_train, y_train, X_pred)
     
     if classifier_name == "Support Vector Machine":
-        return  train_and_predict_with_SVM(X_train, y_train, X_pred)
+        return train_and_predict_with_SVM(X_train, y_train, X_pred)
     
 
 # Naive Bayes Model:
@@ -50,7 +50,7 @@ def train_and_predict_with_knn(X_train, y_train, X_pred):
     '''
 
     X_pred = X_pred.reshape(1, -1)
-    print("train and predict starts for knn starts")
+    print("train and predict for knn starts")
     params_grid = {'n_neighbors': [2, 3]}
 
     # Grid search for parameter tuning
@@ -78,8 +78,11 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
 
     print("train and predict for SVM starts")
     # Grid search for parameter tuning
-    params_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
-    grid_search = GridSearchCV(SVC(), params_grid, cv=5, scoring='accuracy', refit=True,verbose=2)
+    # we had to limit the amount of options because it would have taken way too long otherwise
+    params_grid = {'C': [0.1,1],
+                   #'gamma': [1,0.1,0.01,0.001],
+                   'kernel': ['rbf', 'sigmoid']}
+    grid_search = GridSearchCV(SVC(), params_grid, cv=3, scoring='accuracy', refit=True,verbose=2)
     print("grid search is fitting")
     grid_search.fit(X_train, y_train)
 
@@ -93,6 +96,7 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
     return y_pred, best_params, best_score
 
 def train_and_predict_with_RF(X_train, y_train, X_pred):
+
     '''
     Fit Random Forest classifier to training data
     X_train = training feature matrix obtained from TF-IDF conversion
@@ -101,23 +105,29 @@ def train_and_predict_with_RF(X_train, y_train, X_pred):
 
     print("training for Random Forest starts")
 
-    classifier = RandomForestClassifier()
+    classifier = RandomForestClassifier(verbose=3)
 
-    # grid search for parameter tuning
-    grid_space = {'max_depth': [50,100,500,1000, None],
-                  'n_estimators': [10, 100, 200],
-                  'max_features': [1, 3, 5, 7],
-                  'min_samples_leaf': [1, 2, 3],
-                  'min_samples_split': [1, 2, 3]
+    # grid search for finding optimal hyperparameters
+    #we had to limit the amount of options because it would have taken way too long otherwise
+    grid_space = {'max_depth': [50,100],
+                  'n_estimators': [10, 100],
+                  #'max_features': [3,5,7],
+                  #'min_samples_leaf': [1,2,3],
+                  #'min_samples_split': [1,2,3]
                   }
 
     grid = GridSearchCV(classifier, param_grid=grid_space, cv=3, scoring='accuracy')
+
+    print("----------------fitting--------------------------")
     grid.fit(X_train, y_train)
 
     #prediction
-    y_pred = grid.best_estimator.predict(X_pred)
+    print("----------------predicting--------------------------")
+
+    y_pred = grid.best_estimator_.predict(X_pred)
 
     best_params = grid.best_params_
     best_score = grid.best_score_
+
 
     return y_pred, best_params, best_score

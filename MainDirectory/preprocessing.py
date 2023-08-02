@@ -64,6 +64,12 @@ def expand_contractions(text):
     expanded_text = pattern.sub(lambda match: contractions[match.group(0)], text)
     return expanded_text
 
+def vectorizeText(text):
+    tfidf_vectorizer = TfidfVectorizer()
+    X_pred = tfidf_vectorizer.fit_transform(text)
+
+    return X_pred
+
 def preprocess_and_split_data():
 
     # Applying to 'headline' column
