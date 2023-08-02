@@ -1,6 +1,6 @@
 from sklearn.metrics import classification_report, confusion_matrix
 
-def evaluate_model(classifier_name, best_params, best_score, y_true, y_pred):
+def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
     '''
     Evaluating:
     confusion_matrix
@@ -19,7 +19,7 @@ def evaluate_model(classifier_name, best_params, best_score, y_true, y_pred):
 
     # Best parameters, Best score
     print("Best Parameters:", best_params)
-    print("Best Score:", best_score)
+    print("Score:", score)
 
     print("Evaluation Report:")
     print(classification_report(y_true, y_pred))

@@ -1,7 +1,9 @@
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import  GridSearchCV
+from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
+from numpy import mean
 
 # to chose correct model to run based on user input
 def use_model(classifier_name, X_train, y_train, X_pred):
@@ -28,11 +30,14 @@ def train_and_predict_with_naivebayes(X_train, y_train, X_pred):
     naive_bayes_classifier = MultinomialNB()
     naive_bayes_classifier.fit(X_train, y_train)
 
-    # Make predictions: 
-    # X_pred =  feature matrix, y_pred = predicted labels
+    # Make predictions:
     y_pred = naive_bayes_classifier.predict(X_pred)
 
-    return y_pred #add , best_params, best_score
+    #no gridsearch because Naive Bayes has no hyper-parameters to tune
+    best_params = None
+    mean_score = mean(cross_val_score(naive_bayes_classifier, X_train, y_train, cv=5, scoring='accuracy'))
+
+    return y_pred, best_params, mean_score
 
 # K-nearest Neighbors Model:
 def train_and_predict_with_knn(X_train, y_train, X_pred):
@@ -73,7 +78,7 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
     print("train and predict starts")
     # Grid search for parameter tuning
     params_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
-    grid_search = GridSearchCV( KNeighborsClassifier(), params_grid, cv=5, scoring='accuracy', refit=True,verbose=2)
+    grid_search = GridSearchCV(SVC(), params_grid, cv=5, scoring='accuracy', refit=True,verbose=2)
     print("grid search is fitting")
     grid_search.fit(X_train, y_train)
 
