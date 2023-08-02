@@ -14,7 +14,7 @@ def use_model(classifier_name, X_train, y_train, X_pred):
         return  train_and_predict_with_knn(X_train, y_train, X_pred)
     
     if classifier_name == "Random Forest":
-        return  #train_and_predict_with_naivebayes(X_train, y_train, X_pred)
+        return  train_and_predict_with_RF(X_train, y_train, X_pred)
     
     if classifier_name == "Support Vector Machine":
         return  train_and_predict_with_SVM(X_train, y_train, X_pred)
@@ -88,5 +88,35 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
 
     best_params = grid_search.best_params_
     best_score = grid_search.best_score_
+
+    return y_pred, best_params, best_score
+
+def train_and_predict_with_RF(X_train, y_train, X_pred):
+    '''
+    Fit Random Forest classifier to training data
+    X_train = training feature matrix obtained from TF-IDF conversion
+    y_train = corresponding target variable
+    '''
+
+    print("training starts")
+
+    classifier = RandomForestClassifier()
+
+    # grid search for parameter tuning
+    grid_space = {'max_depth': [50,100,500,1000, None],
+                  'n_estimators': [10, 100, 200],
+                  'max_features': [1, 3, 5, 7],
+                  'min_samples_leaf': [1, 2, 3],
+                  'min_samples_split': [1, 2, 3]
+                  }
+
+    grid = GridSearchCV(classifier, param_grid=grid_space, cv=3, scoring='accuracy')
+    grid.fit(X_train, y_train)
+
+    #prediction
+    y_pred = grid.best_estimator.predict(X_pred)
+
+    best_params = grid.best_params_
+    best_score = grid.best_score_
 
     return y_pred, best_params, best_score
