@@ -1,10 +1,14 @@
+# download in your environment with: conda install scikit-learn-intelex -c conda-forge OR pip install scikit-learn-intelex
+from sklearnex import patch_sklearn 
+patch_sklearn()
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import cross_val_score
-from sklearn.svm import SVC
 from numpy import mean
+from sklearn.svm import SVC
+
 
 # to chose correct model to run based on user input
 def use_model(classifier_name, X_train, y_train, X_pred):
@@ -81,7 +85,8 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
     params_grid = {'C': [0.1,1],
                    #'gamma': [1,0.1,0.01,0.001],
                    'kernel': ['rbf', 'sigmoid']}
-    grid_search = GridSearchCV(SVC(), params_grid, cv=2, scoring='accuracy', refit=True,verbose=2)
+    
+    grid_search = GridSearchCV( SVC(probability=True), params_grid, cv=2, scoring='accuracy', refit=True,verbose=2)
     print("grid search is fitting")
     grid_search.fit(X_train, y_train)
 

@@ -1,4 +1,5 @@
 from sklearn.metrics import classification_report, confusion_matrix, roc_curve, roc_auc_score
+import matplotlib.pyplot as plt
 
 def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
     '''
@@ -31,9 +32,38 @@ def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
 
     return 0
 
-def plot_roc_curves(ax, estimator, classifier_name, X_test, y_test):
-    y_pred = estimator.predict_proba(X_test)[:, 1] # hier muss man nochmal schauen
-    fpr, tpr, _ = roc_curve(y_test, y_pred)
-    auc = round(roc_auc_score(y_test, y_pred), )
-    ax.plot(fpr,tpr,label=classifier_name, "AUC="+str(auc))
-    return 0
+def plot_roc(ax,fig,X_test, model, y_test, model_name):
+    print("predicting probabilities of model")
+    pred_prob = model.predict_proba(X_test)[:, 1]
+    # roc curve for models
+    fpr, tpr, thresh = roc_curve(y_test, pred_prob, pos_label=1)
+
+    random_probs = [0 for i in range(len(y_test))]
+    p_fpr, p_tpr, _ = roc_curve(y_test, random_probs, pos_label=1)
+
+    auc_score = roc_auc_score(y_test, pred_prob)
+
+    #ax.style.use('seaborn')
+    print("Preparing Roc curve plot")
+
+    # color of plots:
+    if model_name == "Naive Bayes":
+        color = 'orange'
+    if model_name == "k-nearest Neighbor":
+        color = 'red'
+    if model_name == "Random Forest":
+        color = 'green'
+    if model_name == "Support Vector Machine":
+        color = 'darkviolet'
+    
+    # plot roc curves
+    ax.plot(fpr, tpr, linestyle='--',color=color, label=model_name+" (AUC_score = "+str(auc_score))
+    ax.plot(p_fpr, p_tpr, linestyle='--', color='blue')
+    # title
+    ax.set_title('ROC curve')
+    # x label
+    ax.set_xlabel('False Positive Rate')
+    # y label
+    ax.set_ylabel('True Positive rate')
+
+    ax.legend(loc='best')
