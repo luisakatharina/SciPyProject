@@ -38,7 +38,7 @@ def train_and_predict_with_naivebayes(X_train, y_train, X_pred):
     best_params = None
     mean_score = mean(cross_val_score(naive_bayes_classifier, X_train, y_train, cv=5, scoring='accuracy'))
 
-    return y_pred, best_params, mean_score
+    return y_pred, best_params, mean_score, naive_bayes_classifier
 
 # K-nearest Neighbors Model:
 def train_and_predict_with_knn(X_train, y_train, X_pred):
@@ -49,7 +49,6 @@ def train_and_predict_with_knn(X_train, y_train, X_pred):
     k = number of nearest neighbors
     '''
 
-    X_pred = X_pred.reshape(1, -1)
     print("train and predict for knn starts")
     params_grid = {'n_neighbors': [2, 3]}
 
@@ -65,7 +64,7 @@ def train_and_predict_with_knn(X_train, y_train, X_pred):
     best_params = grid_search.best_params_
     best_score = grid_search.best_score_
 
-    return y_pred, best_params, best_score
+    return y_pred, best_params, best_score, grid_search.best_estimator_
 
 
 # Suport Vector Machine Model:
@@ -82,7 +81,7 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
     params_grid = {'C': [0.1,1],
                    #'gamma': [1,0.1,0.01,0.001],
                    'kernel': ['rbf', 'sigmoid']}
-    grid_search = GridSearchCV(SVC(), params_grid, cv=3, scoring='accuracy', refit=True,verbose=2)
+    grid_search = GridSearchCV(SVC(), params_grid, cv=2, scoring='accuracy', refit=True,verbose=2)
     print("grid search is fitting")
     grid_search.fit(X_train, y_train)
 
@@ -93,7 +92,7 @@ def train_and_predict_with_SVM(X_train, y_train, X_pred):
     best_params = grid_search.best_params_
     best_score = grid_search.best_score_
 
-    return y_pred, best_params, best_score
+    return y_pred, best_params, best_score, grid_search.best_estimator_
 
 def train_and_predict_with_RF(X_train, y_train, X_pred):
 
@@ -130,4 +129,4 @@ def train_and_predict_with_RF(X_train, y_train, X_pred):
     best_score = grid.best_score_
 
 
-    return y_pred, best_params, best_score
+    return y_pred, best_params, best_score, grid.best_estimator_

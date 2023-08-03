@@ -15,7 +15,7 @@ def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
 
     #cross validation?
 
-    print("Evaluation of model", classifier_name)
+    print("Evaluation of ", classifier_name," model")
 
     # Best parameters, Best score
     print("Best Parameters:", best_params)

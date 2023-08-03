@@ -65,7 +65,7 @@ def expand_contractions(text):
     return expanded_text
 
 def vectorizeText(text):
-    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_vectorizer = TfidfVectorizer(lowercase=False)
     X_pred = tfidf_vectorizer.fit_transform(text)
 
     return X_pred
@@ -92,5 +92,20 @@ def preprocess_and_split_data():
 
     print("processing and splitting done")
 
-    return X_train, X_test, y_train, y_test
+    return X_train, X_test, y_train, y_test, tfidf_vectorizer
+
+def fix_length(X):
+
+    if len(X) < 25852:
+        nones = 25852 - len(X)
+        return X + [None] * nones
+    else:
+        return X
+def convert(classification):
+    if classification == 0:
+        return "not sarcastic"
+    else:
+        return "sarcastic"
+
+
 
