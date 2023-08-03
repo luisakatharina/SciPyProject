@@ -94,18 +94,17 @@ def preprocess_and_split_data():
 
     return X_train, X_test, y_train, y_test, tfidf_vectorizer
 
-def fix_length(X):
-
-    if len(X) < 25852:
-        nones = 25852 - len(X)
-        return X + [None] * nones
-    else:
-        return X
 def convert(classification):
     if classification == 0:
         return "not sarcastic"
     else:
         return "sarcastic"
+
+def preprocess_input(input):
+    input = expand_contractions(input)
+    input = preprocess_text(input)
+
+    return input
 
 
 

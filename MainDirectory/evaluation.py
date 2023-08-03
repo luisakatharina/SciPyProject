@@ -1,6 +1,4 @@
 from sklearn.metrics import classification_report, confusion_matrix, roc_curve, roc_auc_score
-import matplotlib.pyplot as plt
-
 def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
     '''
     Evaluating:
@@ -22,6 +20,7 @@ def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
     print("Best Parameters:", best_params)
     print("Score:", score)
 
+    report = classification_report(y_true, y_pred, output_dict=True)
     print("Evaluation Report:")
     print(classification_report(y_true, y_pred))
 
@@ -30,9 +29,9 @@ def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
 
     print("----------------------------------------------")
 
-    return 0
+    return report['accuracy']
 
-def plot_roc(ax,X_test, model, y_test, model_name):
+def plot_roc(ax, X_test, model, y_test, model_name):
     """
     Function does not return anything.
 
@@ -48,9 +47,9 @@ def plot_roc(ax,X_test, model, y_test, model_name):
 
     # roc curve for models
     fpr, tpr, thresh = roc_curve(y_test, pred_prob, pos_label=1)
-    print("ROC_curve: threshold of ", model_name, " is ", str(round(thresh)))
+    #print("ROC_curve: threshold of ", model_name, " is ", str(thresh))
 
-    # roc curve for tpr = fpr 
+    # roc curve for tpr = fpr
     random_probs = [0 for i in range(len(y_test))]
     p_fpr, p_tpr, _ = roc_curve(y_test, random_probs, pos_label=1)
 
@@ -68,9 +67,9 @@ def plot_roc(ax,X_test, model, y_test, model_name):
         color = 'green'
     if model_name == "Support Vector Machine":
         color = 'darkviolet'
-    
+
     # plot roc curves
-    ax.plot(fpr, tpr, linestyle='--',color=color, label=model_name+" (AUC_score = "+str(auc_score))
+    ax.plot(fpr, tpr, linestyle='--', color=color, label=model_name + " (AUC_score = " + str(auc_score))
     ax.plot(p_fpr, p_tpr, linestyle='--', color='blue')
     # title
     ax.set_title('ROC curve')
