@@ -5,15 +5,16 @@ Additionally the user is able to decide which of these four Classifiers they wan
 If you chose more than one the output of the better model will be taken.
 
 ## Libraries/Modules used
-sklearn
-sklearnex (https://intel.github.io/scikit-learn-intelex/installation.html)
-numpy
-matplotlib
-pandas
-easygui (https://pypi.org/project/easygui/)
-json
-re
-nltk
+
+- sklearn
+- sklearnex (https://intel.github.io/scikit-learn-intelex/installation.html)
+- numpy
+- matplotlib
+- pandas
+- easygui (https://pypi.org/project/easygui/)
+- json
+- re
+- nltk
 
 ## Data Preprocessing 
 Luisa
