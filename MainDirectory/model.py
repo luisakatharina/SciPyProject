@@ -4,14 +4,18 @@ patch_sklearn()
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import cross_val_score
 from numpy import mean
-from sklearn.svm import SVC
+
 
 
 # to chose correct model to run based on user input
 def use_model(classifier_name, X_train, y_train, X_pred):
+    """
+    choose model to run based on its string name
+    """
     if classifier_name == "Naive Bayes":
         return train_and_predict_with_naivebayes(X_train, y_train, X_pred)
     

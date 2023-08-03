@@ -32,18 +32,31 @@ def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
 
     return 0
 
-def plot_roc(ax,fig,X_test, model, y_test, model_name):
+def plot_roc(ax,X_test, model, y_test, model_name):
+    """
+    Function does not return anything.
+
+    pred_prob => predict probabilities of chosen model for roc curve.
+    calculates False Positive Rate (fpr) and True Positive Rate (tpr) and threshold of roc curves of the models.
+    generates also the neccessary values (p_fpr, p_tpr) for a diagonal of the plot (tpr=fpr).
+    Calcualtes the AUC score for the model.
+    adds values as a function into the given axes of a plot.
+    """
+
     print("predicting probabilities of model")
     pred_prob = model.predict_proba(X_test)[:, 1]
+
     # roc curve for models
     fpr, tpr, thresh = roc_curve(y_test, pred_prob, pos_label=1)
+    print("ROC_curve: threshold of ", model_name, " is ", str(round(thresh)))
 
+    # roc curve for tpr = fpr 
     random_probs = [0 for i in range(len(y_test))]
     p_fpr, p_tpr, _ = roc_curve(y_test, random_probs, pos_label=1)
 
+    # auc score f model
     auc_score = roc_auc_score(y_test, pred_prob)
 
-    #ax.style.use('seaborn')
     print("Preparing Roc curve plot")
 
     # color of plots:
