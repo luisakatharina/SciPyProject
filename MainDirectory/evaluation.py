@@ -1,4 +1,4 @@
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, roc_auc_score
 
 def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
     '''
@@ -29,4 +29,11 @@ def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
 
     print("----------------------------------------------")
 
+    return 0
+
+def plot_roc_curves(ax, estimator, classifier_name, X_test, y_test):
+    y_pred = estimator.predict_proba(X_test)[:, 1] # hier muss man nochmal schauen
+    fpr, tpr, _ = roc_curve(y_test, y_pred)
+    auc = round(roc_auc_score(y_test, y_pred), )
+    ax.plot(fpr,tpr,label=classifier_name, "AUC="+str(auc))
     return 0

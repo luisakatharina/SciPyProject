@@ -30,9 +30,13 @@ while True:
     X_input = vectorizer.transform([headline_processed]).toarray()
 
     # evaluating the chosen models' performances on the test set and get their classification of the input
+
+    f, ax = plt.subplots(1)
+
     for classifier in chosen_Classifiers:
         y_pred, best_params, best_score, best_estimator = use_model(classifier, X_train, y_train, X_test)
         evaluate_model(classifier,best_params,best_score,y_test,y_pred)
+        plot_roc_curves(ax, best_estimator, )
 
         input_classification = best_estimator.predict(X_input)
         print(classifier, "classifies your headline as: ", convert(input_classification))
