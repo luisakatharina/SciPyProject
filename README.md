@@ -8,7 +8,7 @@ The evaluation is based on the test data set.
 
 ## Intended Usage
 
-- Make sure you have downloaded all packages required (see below or requirements.txt)
+- Make sure you have downloaded all packages required (see below or MainDirectory/requirements.txt)
 - run main.py file
 - follow the instructions on the pop-ups (If you use pycharm, make sure you are not in full-screen mode to see the pop-ups)
 - After inputting a headline and choosing which Classifiers you want on the pop-ups, the evaluation (precision, recall, f-score, Confusion Matric and AUC-score) will appear in the terminal (If you chose SVM, this step might take a while).
@@ -29,7 +29,7 @@ The evaluation is based on the test data set.
       - Naive Bayes gets closer to 1 than knn, therefore it performs better.
   
 ## Libraries/Modules used
-See requirements.txt for more information
+See MainDirectory/requirements.txt for more information
 - sklearn
 - sklearnex 
 - numpy
