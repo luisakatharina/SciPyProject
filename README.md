@@ -43,6 +43,7 @@ The source of this data set: https://rishabhmisra.github.io/publications/
         - Accuracy = 0.53 
         - Confusion Matrix: [[True Positives=3000, False Positives=1], [False Negatives= 2711, True Negatives=12]]
 4. ROC_curve:
+   
    ![Figure_scipy_Example](https://github.com/luisakatharina/SciPyProject/assets/110250036/b2a6d7b3-4a95-4d3d-a420-06a0c1fd961d)
       - It is obvious from the plot that the AUC for the Naive Bayes ROC curve is higher than that for the KNN ROC curve. Therefore, we can say that Naive Bayes did a better job of classifying the positive class in the dataset.
   
