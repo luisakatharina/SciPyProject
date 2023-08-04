@@ -14,6 +14,18 @@ The evaluation is based on the test data set.
 - After inputting a headline and choosing which Classifiers you want on the pop-ups, the evaluation (precision, recall, f-score, Confusion Matric and AUC-score) will appear in the terminal (If you chose SVM, this step might take a while).
 - In the end the ROC-Curve will be plotted --> The farther away the graph is from the diagonal the better the classifier.
   
+### Example
+
+- Input Headline: Astronaut Takes Blame for Gas in Spacecraft
+- Chosen Classifiers: Naive Bayes, k-nearest Neighbor
+- Evaluation:
+-   Naive Bayes:
+-     Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
+-   Knn:
+-     Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
+-   ROC_curve:
+-   Naive Bayes gets closer to 1 than knn, therefore it performs better.
+  
 ## Libraries/Modules used
 See requirements.txt for more information
 - sklearn
