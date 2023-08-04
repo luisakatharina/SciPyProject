@@ -64,13 +64,12 @@ def expand_contractions(text):
     expanded_text = pattern.sub(lambda match: contractions[match.group(0)], text)
     return expanded_text
 
-def vectorizeText(text):
-    tfidf_vectorizer = TfidfVectorizer(lowercase=False)
-    X_pred = tfidf_vectorizer.fit_transform(text)
-
-    return X_pred
-
 def preprocess_and_split_data():
+    '''
+    This function performs the preprocessing and vectorization steps
+    on the dataset and lastly splits it into train and test sets.
+    We obtain the fitted vectorizer from this function
+    '''
 
     # Applying to 'headline' column
     # Processed headlines stored in new column (to preserve original text data)
@@ -95,14 +94,25 @@ def preprocess_and_split_data():
     return X_train, X_test, y_train, y_test, tfidf_vectorizer
 
 def convert(classification):
+    '''
+    This function converts the numerical labels back into their word form.
+    0 = not sarcastic
+    1 = sarcastic
+    '''
     if classification == 0:
         return "not sarcastic"
     else:
         return "sarcastic"
 
-def preprocess_input(input):
+def preprocess_input(input, vectorizer):
+    '''
+    This function preprocesses and vectorizes the headline given by the user.
+    input = user input
+    vectorizer = vectorizer (fitted on the dataset) used to obtain the feature matrix of the user input.
+    '''
     input = expand_contractions(input)
     input = preprocess_text(input)
+    input = vectorizer.transform([input]).toarray()
 
     return input
 

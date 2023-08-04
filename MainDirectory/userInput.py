@@ -1,9 +1,12 @@
-#from MainDirectory.evaluation import evaluate_model
-#from preprocessing import *
-#from model import *
 import easygui as eg # installation of easygui needed
 
 def user_Input():
+    '''
+    This function creates pop-up windows that briefly explain the usage of the program and ask the user for their custom
+    headline and the classifiers they want to compare in order to use the best one for prediction of their own headline's label.
+    We obtain the custom headline as string and the classiifer choice as an array.
+    '''
+
     title = "What this program does"
     explain = "Hello, this is a programm where you can input a custom written news headline, and we will tell you (according to different machine learning classifiers), whether it is most likeley supposed to be sarcastic or not."
     if eg.msgbox(explain, title=title,ok_button="OK") == None:
@@ -27,6 +30,9 @@ def user_Input():
     return headline_input, choice
 
 def user_headline():
+    '''
+    This function specifically asks the user for the custom headline.
+    '''
     title = "Input"
     satisfied_hl = False
     while satisfied_hl == False:
@@ -36,12 +42,11 @@ def user_headline():
             headline_input = eg.enterbox(ask_input, title)
             if headline_input == None:
                 quit()
-        # preprocess headline_input
 
         msg_verify = "Your Input:\n" + headline_input +"\n\nWould you like to continue or do you want to change your headline?"
         if eg.ccbox(msg_verify, title, ["Continue", "Change Headline"]):     # show a Continue/Cancel dialog
-            satisfied_hl=True  # user chose Continue
+            satisfied_hl = True  # user chose Continue
         else:  # user chose change headline
-            satisfied_hl=False
+            satisfied_hl = False
 
         return headline_input
