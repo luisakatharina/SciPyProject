@@ -31,11 +31,11 @@ The evaluation is based on the test data set.
 ## Libraries/Modules used
 See requirements.txt for more information
 - sklearn
-- sklearnex (https://intel.github.io/scikit-learn-intelex/installation.html)
+- sklearnex 
 - numpy
 - matplotlib
 - pandas
-- easygui (https://pypi.org/project/easygui/)
+- easygui 
 - json
 - re
 - nltk
