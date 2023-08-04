@@ -40,26 +40,30 @@ See MainDirectory/requirements.txt for more information
 - re
 - nltk
 
-## Data Preprocessing 
-Luisa
+## preprocessing.py
 
-## Classifiers + Evaluation
+Cleans data and user input (e.g. everything to lower case, gets rid of stopwords, expands contractions), Vectorizes text --> creates feature Matrix, Splits data into train and test data set (80/20).
 
-- Naive Bayes: Luisa
-- KNN: Vanessa
-- Random Forrest: Shabnam
-- SVM: Isa
+
+## model.py
+
+Functions for all four classifiers (Naive Bayes, k-nearest Neighbor, Random Forest, Support Vector Machines): fits classifier, trains model, predicts test data.
+Seperate function to get correct classifier function based on string name of classifier.
 
 ## userInput.py
+
 The file has two functions: user_Input() and headline_Input()
-With easygui the headline input and which classifier the user wants is saved.
+With easygui the headline input and which classifier the user wants is saved in seperate variables and then ouputted. 
+headline_Input() used by user_Input(), they are seperated to create a loop if user whishes to input another headline after evaluating previous headline.
 
+## evaluation.py
 
-## Plotting Evaluation + Dataframe
-ll
+Model evaluated through classification report and confusion matrix in function evaluate_model().
+ROC_curve as well as AUC_score of model generated in function plot_roc() as further evaluation and comparison between models if more than one selected.
 
-## Main
-kk
+## main.py
+
+Makes use of all previous functions. User runs programm by executing main.py.
 
 ## Remarks on our Project
 
