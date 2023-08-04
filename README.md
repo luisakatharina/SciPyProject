@@ -48,7 +48,7 @@ The source of this data set: https://rishabhmisra.github.io/publications/
 
   - It is obvious from the plot that the AUC for the Naive Bayes ROC curve is higher than that for the KNN ROC curve. Therefore, we can say that Naive Bayes did a better job of classifying the positive class in the dataset.
   
-6. Classification of headline (Best model - according to accuracy - of the chosen classifiers is used for classification of the headline)
+5. Classification of headline (Best model - according to accuracy - of the chosen classifiers is used for classification of the headline)
       - Naive Bayes classifies the headline as [Sarcastic]
   
 ## Libraries/Modules used
