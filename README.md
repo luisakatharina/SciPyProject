@@ -18,11 +18,13 @@ The evaluation is based on the test data set.
 
 - Input Headline: Astronaut Takes Blame for Gas in Spacecraft
 - Chosen Classifiers: Naive Bayes, k-nearest Neighbor
-  1. Evaluation:
+- Evaluation:
       - Naive Bayes:
         - Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
--   Knn:
--     Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
+        - Naive Bayes classifies the headline as [Sarcastic]
+      - Knn:
+        - Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
+        - Knn classifies the headline as []
 -   ROC_curve:
 -   Naive Bayes gets closer to 1 than knn, therefore it performs better.
   
