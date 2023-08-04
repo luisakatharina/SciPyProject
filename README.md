@@ -34,6 +34,7 @@ The source of this data set: https://rishabhmisra.github.io/publications/
         - Knn classifies the headline as []
 4. ROC_curve:
       - Naive Bayes gets closer to 1 than knn, therefore it performs better.
+      - It is evident from the plot that the AUC for the Logistic Regression ROC curve is higher than that for the KNN ROC curve. Therefore, we can say that logistic regression did a better job of classifying the positive class in the dataset.
   
 ## Libraries/Modules used
 See MainDirectory/requirements.txt for more information
