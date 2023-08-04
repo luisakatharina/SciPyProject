@@ -25,8 +25,10 @@ Labraries/Models used, Download Link, Why we used them
   - Used while loading data
 
 - re (https://pypi.org/project/regex/)
+  - To be able to use regular expressions to preprocess text
 
 - nltk (https://www.nltk.org/install.html)
+  - Text preprocessing, e.g., by tokenizing text and getting rid of stopwords
 
 You may need to download stopwords and punkt from nltk for preprocessing to work
 nltk.download('stopwords')
