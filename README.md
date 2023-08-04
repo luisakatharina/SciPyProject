@@ -10,7 +10,7 @@ The evaluation is based on the test data set.
 
 - Make sure you have downloaded all packages required (see below or requirements.txt)
 - run main.py file
-- follow the instructions on the pop-ups (If you use pycharm, mae sure you are not in full-screen mode to see the pop-ups)
+- follow the instructions on the pop-ups (If you use pycharm, make sure you are not in full-screen mode to see the pop-ups)
 - After inputting a headline and choosing which Classifiers you want on the pop-ups, the evaluation (precision, recall, f-score, Confusion Matric and AUC-score) will appear in the terminal (If you chose SVM, this step might take a while).
 - In the end the ROC-Curve will be plotted --> The farther away the graph is from the diagonal the better the classifier.
   
