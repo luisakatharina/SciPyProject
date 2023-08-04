@@ -3,6 +3,8 @@
 This project aimed to use Machine Learning to detect sarcasm in a custom made "News" Headline inputed by the user. 
 Additionally the user is able to decide which of these four Classifiers they want to use to evaluate their custom headline: "Naive Bayes, k-nearest Neighbor, Random Forrest and Support Vector Machines. 
 If you chose more than one the output of the better model will be taken.
+This project uses the Sarcasm_Headlines_Dataset_v2.json data set (https://www.kaggle.com/datasets/rmisra/news-headlines-dataset-for-sarcasm-detection). We split it 80/20 for train and test data set.
+The evaluation is based on the test data set.
 
 ## Libraries/Modules used
 See requirements.txt for more information
