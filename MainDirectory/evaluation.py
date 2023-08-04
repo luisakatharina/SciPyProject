@@ -1,4 +1,6 @@
 from sklearn.metrics import classification_report, confusion_matrix, roc_curve, roc_auc_score
+
+
 def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
     '''
     Evaluating:
@@ -68,7 +70,7 @@ def plot_roc(ax, X_test, model, y_test, model_name):
         color = 'darkviolet'
 
     # plot roc curves
-    ax.plot(fpr, tpr, linestyle='--', color=color, label=model_name + " (AUC_score = " + str(auc_score))
+    ax.plot(fpr, tpr, linestyle='--', color=color, label=model_name + " (AUC_score = " + str(auc_score) + ")")
     ax.plot(p_fpr, p_tpr, linestyle='--', color='blue')
     # title
     ax.set_title('ROC curve')

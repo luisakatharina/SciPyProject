@@ -9,6 +9,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
 from numpy import mean
 
+
 # to chose correct model to run based on user input
 def use_model(classifier_name, X_train, y_train, X_pred):
     '''
