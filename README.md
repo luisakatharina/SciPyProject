@@ -26,7 +26,7 @@ The evaluation is based on the test data set.
         - Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
         - Knn classifies the headline as []
 4. ROC_curve:
-  - Naive Bayes gets closer to 1 than knn, therefore it performs better.
+      - Naive Bayes gets closer to 1 than knn, therefore it performs better.
   
 ## Libraries/Modules used
 See requirements.txt for more information
