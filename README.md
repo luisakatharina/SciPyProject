@@ -19,7 +19,7 @@ The source of this data set: https://rishabhmisra.github.io/publications/
 - run main.py file
 - follow the instructions on the pop-ups (If you use pycharm, make sure you are not in full-screen mode to see the pop-ups)
 - After inputting a headline and choosing which Classifiers you want on the pop-ups, the evaluation (precision, recall, f-score, Confusion Matric and AUC-score) will appear in the terminal (If you chose SVM, this step might take a while).
-- In the end the ROC-Curve will be plotted --> The farther away the graph is from the diagonal the better the classifier.
+- In the end the ROC-Curve will be plotted --> The closer the graph to the point (0,1), the higher Sensitivity and Specificity and the more correct the classifier is at classifying all the Positive and Negative class points.
   
 ### Example
 
