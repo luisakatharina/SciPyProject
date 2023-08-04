@@ -16,17 +16,17 @@ The evaluation is based on the test data set.
   
 ### Example
 
-- Input Headline: Astronaut Takes Blame for Gas in Spacecraft
-- Chosen Classifiers: Naive Bayes, k-nearest Neighbor
-- Evaluation:
+1. Input Headline: Astronaut Takes Blame for Gas in Spacecraft
+2. Chosen Classifiers: Naive Bayes, k-nearest Neighbor
+3. Evaluation:
       - Naive Bayes:
         - Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
         - Naive Bayes classifies the headline as [Sarcastic]
       - Knn:
         - Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
         - Knn classifies the headline as []
--   ROC_curve:
--   Naive Bayes gets closer to 1 than knn, therefore it performs better.
+4. ROC_curve:
+  - Naive Bayes gets closer to 1 than knn, therefore it performs better.
   
 ## Libraries/Modules used
 See requirements.txt for more information
