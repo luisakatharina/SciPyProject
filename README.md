@@ -5,7 +5,7 @@ Additionally the user is able to decide which of these four Classifiers they wan
 If you chose more than one the output of the better model will be taken.
 
 ## Libraries/Modules used
-
+See requirements.txt for more information
 - sklearn
 - sklearnex (https://intel.github.io/scikit-learn-intelex/installation.html)
 - numpy
