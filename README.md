@@ -6,6 +6,13 @@ If you chose more than one the output of the better model will be taken.
 This project uses the Sarcasm_Headlines_Dataset_v2.json data set (https://www.kaggle.com/datasets/rmisra/news-headlines-dataset-for-sarcasm-detection). We split it 80/20 for train and test data set.
 The evaluation is based on the test data set. 
 
+### Dataset citation
+
+1. Misra, Rishabh and Prahal Arora. "Sarcasm Detection using News Headlines Dataset." AI Open (2023).
+2. Misra, Rishabh and Jigyasa Grover. "Sculpting Data for ML: The first act of Machine Learning." ISBN 9798585463570 (2021).
+
+The source of this data set: https://rishabhmisra.github.io/publications/ 
+
 ## Intended Usage
 
 - Make sure you have downloaded all packages required (see below or MainDirectory/requirements.txt)
@@ -71,8 +78,6 @@ Makes use of all previous functions. User runs programm by executing main.py.
 
 ## Remarks on our Project
 
-- Yields expected ouput [Sarcastic/not Sarcastic], but it has a very specific definition of what sarcastic is (most headlines, even very stupid ones, get classified as not sarcastic)
-- this could be because the data used, whihc might train the models in a very particular way
-- Due to data our definition of what is sarcastic is very narrow and limited. Sarcasm also depends a lot on context, tone of voice and expressions, which we cannot give.
-- Python might crash while executing code with SVM classifier IF YOU USE A MACBOOK. We did not encounter this problem with Windows11
+- Our program yields expected ouput: It classifies a headline as [Sarcastic] or [not Sarcastic] and outputs the evaluation of the selected models. But it classifies a headline most frequently as [not Sarcastic]. We believe this could be due to a very specific definition of what sarcastic is because of the data we chose to use. Since it only uses official headlines from "The Onions" (for sarcastic headlines of current events) and "Huffpost" (for real and non-sarcastic headlines) and the dataset was built mainly for Sarcasm in news headlines as well as fake news detection, the models are built for a very narrow definition of sarcasm. Additionally, our model does not take into account any semantics of the words and so a headline like "Cows lose jobs" is classified as [not Sarcastic]. Sarcasm is very dependent on context, voice tonality and facial expressions, so naturally building an algorithm to detect sarcasm is extremely difficult and demanding.
+- Python might crash while executing code with SVM classifier IF YOU USE A MACBOOK. We did not encounter this problem (or any other complications) running the program using Windows11. 
 
