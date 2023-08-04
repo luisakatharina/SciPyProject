@@ -1,0 +1,34 @@
+Labraries/Models used, Download Link, Why we used them
+
+- sklearn (https://scikit-learn.org/stable/install.html)
+  - used for the Classifiers (Random Forest, (Multinomial)Naive Bayes, KNN, SVM)
+  - used for Gridsearch to find optimal parameter values from given set of parameters
+  - to evaluate a score by cross-validation (cross_val_score)
+  - Used for the evaluation (classification_report, confusion_matrix, roc_curve, roc_auc_score)
+
+- sklearnex (https://intel.github.io/scikit-learn-intelex/installation.html)
+  - To accelerate your Scikit-learn applications through patching, especially to improve runtime of SVM
+
+- numpy (https://numpy.org/install/)
+  - to be able to calculate a mean
+
+- matplotlib (https://matplotlib.org/stable/users/installing/index.html)
+  - to plot the ROC curve
+
+- pandas (https://pandas.pydata.org/docs/getting_started/install.html)
+  - to safe the data in a panda dataframe
+
+- easygui (https://pypi.org/project/easygui/)
+  - To get the pop-ups where the user can interact with the programm (input headline and choose classifiers)
+
+- json : built-in module in Python, you don’t need to install it with pip
+  - Used while loading data
+
+- re (https://pypi.org/project/regex/)
+
+- nltk (https://www.nltk.org/install.html)
+
+You may need to download stopwords and punkt from nltk for preprocessing to work
+nltk.download('stopwords')
+nltk.download('punkt') 
+
