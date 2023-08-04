@@ -132,7 +132,7 @@ def train_and_predict_with_RF(X_train, y_train, X_pred):
     grid_search.fit(X_train, y_train)
 
     #prediction
-    print("----------------predicting--------------------------")
+    print("model is predicting")
 
     y_pred = grid_search.best_estimator_.predict(X_pred)
 

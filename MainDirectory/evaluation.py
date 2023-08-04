@@ -21,7 +21,7 @@ def evaluate_model(classifier_name, best_params, score, y_true, y_pred):
     print("Score:", score)
 
     report = classification_report(y_true, y_pred, output_dict=True)
-    print("Evaluation Report:")
+    print("Classification Report:")
     print(classification_report(y_true, y_pred))
 
     print("Confusion Matrix:")
@@ -47,7 +47,6 @@ def plot_roc(ax, X_test, model, y_test, model_name):
 
     # roc curve for models
     fpr, tpr, thresh = roc_curve(y_test, pred_prob, pos_label=1)
-    #print("ROC_curve: threshold of ", model_name, " is ", str(thresh))
 
     # roc curve for tpr = fpr
     random_probs = [0 for i in range(len(y_test))]
