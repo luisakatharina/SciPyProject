@@ -30,7 +30,7 @@ Labraries/Models used, Download Link, Why we used them
 - nltk (https://www.nltk.org/install.html)
   - Text preprocessing, e.g., by tokenizing text and getting rid of stopwords
 
-You may need to download stopwords and punkt from nltk for preprocessing to work
+You may need to download stopwords and punkt from nltk for preprocessing to work (MainDirectory/preprocessing.py)
 - nltk.download('stopwords')
 - nltk.download('punkt') 
 
