@@ -23,7 +23,7 @@ The source of this data set: https://rishabhmisra.github.io/publications/
   
 ### Example
 
-1. Input Headline: *Astronaut Takes Blame for Gas in Spacecraft*
+1. Input Headline: *Astronaut Takes Blame for Gas in Spacecraft* 
 2. Chosen Classifiers: Naive Bayes, k-nearest Neighbor
 3. Evaluation:
       - Naive Bayes:
