@@ -27,14 +27,26 @@ The source of this data set: https://rishabhmisra.github.io/publications/
 2. Chosen Classifiers: Naive Bayes, k-nearest Neighbor
 3. Evaluation:
       - Naive Bayes:
-        - Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
-        - Naive Bayes classifies the headline as [Sarcastic]
+        - Best Parameter: None (from GridSearch --> Naive Bayes has no hyper-parameters to tune)
+        - Score: 0.7953701681589866
+        - Precision = 0.81
+        - Recall = 0.75
+        - F-score = 0.78
+        - Accuracy = 0.8
+        - Confusion Matrix: [[True Positives=1532, False Positives=469], [False Negatives= 678, True Negatives=2045]]
       - Knn:
-        - Precision= , Recall= ,F-score= , Confusion Matrix: , AUC_score=
-        - Knn classifies the headline as []
+        - Best Parameter: {'n_neighbors': 3} (from GridSearch, 3 neighbors best hyperparameter)
+        - Score: 0.5709980345053505
+        - Precision = 0.92
+        - Recall = 0
+        - F-score = 0.01
+        - Accuracy = 0.53 
+        - Confusion Matrix: [[True Positives=3000, False Positives=1], [False Negatives= 2711, True Negatives=12]]
 4. ROC_curve:
-      - Naive Bayes gets closer to 1 than knn, therefore it performs better.
-      - It is evident from the plot that the AUC for the Logistic Regression ROC curve is higher than that for the KNN ROC curve. Therefore, we can say that logistic regression did a better job of classifying the positive class in the dataset.
+      - It is obvious from the plot that the AUC for the Naive Bayes ROC curve is higher than that for the KNN ROC curve. Therefore, we can say that Naive Bayes did a better job of classifying the positive class in the dataset.
+  
+5. Classification of headline (Best model - accrding to accuracy - of the chosen classifiers is used for classification of the headline)
+      - Naive Bayes classifies the headline as [Sarcastic]
   
 ## Libraries/Modules used
 See MainDirectory/requirements.txt for more information
