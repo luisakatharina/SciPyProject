@@ -26,14 +26,13 @@ Luisa
 - Random Forrest: Shabnam
 - SVM: Isa
 
-## User Input + Preproccesing
-Isa
+## userInput.py
+The file has two functions: user_Input() and headline_Input()
+With easygui the headline input and which classifier the user wants is saved.
+
 
 ## Plotting Evaluation + Dataframe
-Vanessa
+
 
 ## Main
-Shabnam
 
-## Documentation
-Shabnam+Isa
