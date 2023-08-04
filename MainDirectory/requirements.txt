@@ -31,6 +31,6 @@ Labraries/Models used, Download Link, Why we used them
   - Text preprocessing, e.g., by tokenizing text and getting rid of stopwords
 
 You may need to download stopwords and punkt from nltk for preprocessing to work
-nltk.download('stopwords')
-nltk.download('punkt') 
+- nltk.download('stopwords')
+- nltk.download('punkt') 
 
