@@ -42,4 +42,5 @@ kk
 - Yields expected ouput [Sarcastic/not Sarcastic], but it has a very specific definition of what sarcastic is (most headlines, even very stupid ones, get classified as not sarcastic)
 - this could be because the data used, whihc might train the models in a very particular way
 - Due to data our definition of what is sarcastic is very narrow and limited. Sarcasm also depends a lot on context, tone of voice and expressions, which we cannot give.
+- Python might crash while executing code with SVM classifier IF YOU USE A MACBOOK. We did not encounter this problem with Windows11
 
